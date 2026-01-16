@@ -7,9 +7,8 @@ even_lst = [i for i in range(11) if i % 2 == 0]
 print(even_lst)
 
 """List Comprehension with Function"""
-def square(n):
-    n = int(input("Enter a number to square: "))
-    return n * n
+def square(x):
+    return x * x
 squared_lst = [square(i) for i in range(11)]
 print(squared_lst)
 

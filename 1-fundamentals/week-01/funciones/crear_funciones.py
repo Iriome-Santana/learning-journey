@@ -1,13 +1,13 @@
 #creando una funcion simple
 
-#def saludar():
-    #print("Hola, ¿cómo estás?")
+"""def saludar():
+    print("Hola, ¿cómo estás?")"""
     
     
-#ejecutando la funcion simple
-#saludar()
+"""ejecutando la funcion simple
+saludar()"""
 
-#crear funcion que tenga parametros
+"""crear funcion que tenga parametros"""
 nombre = input("Tu nombre: ")
 sexo = input("Tu sexo: ")
 edad = int(input("Introduce tu edad: "))
@@ -27,7 +27,7 @@ def saludar(nombre, sexo, edad):
     
 saludar(nombre, sexo,edad)
 
-#crear una funcion que nos retorne valores
+"""crear una funcion que nos retorne valores"""
 
 def crear_contraseña_random(num):
    chars = "abcdefghij"
@@ -39,10 +39,10 @@ def crear_contraseña_random(num):
    contraseña = f"{chars[c1]}{chars[c2]}{chars[c3]}{num*2}"
    return contraseña, num
    
-#desempaquetando la funcion
+"""desempaquetando la funcion"""
 password, primer_num = crear_contraseña_random(7)
 
-#mostrando la funcion
+"""mostrando la funcion"""
 print(f"Tu contraseña es {password}")
 print(f"El numero que usaste es {primer_num}")
    

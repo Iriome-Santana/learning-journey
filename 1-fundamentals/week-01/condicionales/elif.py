@@ -1,7 +1,7 @@
 ingreso_mensual = 11000
 gasto_mensual = 11000
 
-#if anidado y else if (elif)
+"""if anidado y else if (elif)"""
 
 if ingreso_mensual >= 10000:
     if ingreso_mensual - gasto_mensual < 0:

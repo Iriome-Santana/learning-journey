@@ -17,7 +17,8 @@ def load_data():
         with open(FILE_NAME, "r", encoding="utf-8") as file:
             return json.load(file)
     else:
-        return {"money": 0}
+        return {"money": 0,
+                "plays": 0}
     
 """Function to save data"""
 def save_data(data):
@@ -48,7 +49,9 @@ def play_round():
 #Main game loop
 data = load_data()
 money = data["money"]
+plays = data["plays"]
 
+print(f"You have played {plays} plays")
 print(f"You have: {money} money")
 
 user_score = 0
@@ -77,6 +80,8 @@ while attempts < MAX_ATTEMPTS:
 print("\n-----Game Over-----")
 print(f"Final Scores - You: {user_score}, Computer: {computer_score}")
 
+if attempts == 5:
+    plays +=1
 
 if user_score > computer_score:
     money += 10
@@ -88,6 +93,7 @@ else:
     print("The game ended in a tie! You earn $5 for your effort.")
     money += 5
 
+data["plays"] = plays
 data["money"] = money
 save_data(data)
 

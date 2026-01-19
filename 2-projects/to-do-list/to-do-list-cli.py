@@ -1,7 +1,11 @@
 """Simple To-Do List Application"""
-
+import tkinter
+import logging
 import os
 import json
+
+logging.basicConfig(level=logging.INFO)
+
 """Variable to store tasks"""
 tasks = []
 
@@ -26,23 +30,28 @@ def add_task():
     
     if len(tasks) >= 10:
         print("No se pueden agregar mas tareas")
+        logging.warning("The user try to add more tasks than the limit")
         return
     task = input("\nIngrese una tarea: ")
     if task in tasks:
         print("La tarea ya existe")
+        logging.warning("The user tried to add a existent task")
         return
     if not task.strip():
         print("La tarea no puede estar vacia")
+        logging.warning("The user tried to add a empty task")
         return
     else:
         tasks.append(task)
         save_tasks()
         print("Tarea agregada")
+        logging.info("The user add a task")
 
 def show_tasks():
     """Displays all tasks in the to-do list."""
     if not tasks:
         print("No hay tareas en la lista")
+        logging.info("The user tried to show a empty list of tasks")
         return
 
     for index, task in enumerate(tasks, start=1):
@@ -53,6 +62,7 @@ def delete_task():
 
     if not tasks:
         print("No hay tareas para eliminar")
+        logging.info("The user tried to remove in a empty list of tasks")
         return
     print("\n----Tareas----:")
     show_tasks()
@@ -60,21 +70,26 @@ def delete_task():
     
     if not task.isdigit():
         print("Índice no válido")
+        logging.warning("The user tried to delete a inexistent index")
         return
     
     if int(task) - 1 < len(tasks):
         tasks.pop(int(task) - 1)
         save_tasks()
         print("Tarea eliminada")
+        logging.info("The user deleted a task")
     else:
         print("Tarea no encontrada")
+        logging.warning("The user tried to delete a inexistent task")
 
         
 print("Bienvenido al to-do list")
 
 def main():
     """Displays the menu and handles user input for the to-do list application."""
+    logging.info("Program started")
     while True:
+        
         print("\nMenu:")
         print("1. Agregar tarea")
         print("2. Mostrar tareas")
@@ -95,11 +110,15 @@ def main():
 
         elif option =="4":
             print("Gracias por su visita...")
+            logging.info("Program finished")
             break
 
         else:
             print("\nOPCIÓN NO VÁLIDA, INTENTE DE NUEVO")
-            
+            logging.warning("The user enter a inesxistent option")
+
+
+
 if __name__ == "__main__":
     load_tasks()
     main()

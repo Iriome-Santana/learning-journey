@@ -34,7 +34,7 @@ person = {
 
 person_json = json.dumps(person, indent=2)
 print(type(person_json))
-#print(person_json)
+print(person_json)
 
 """Save a file in JSON"""
 with open("C:\\Users\\iriom\\Desktop\\person.json", "w", encoding="utf-8") as f:

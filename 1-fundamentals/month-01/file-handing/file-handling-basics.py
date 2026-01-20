@@ -1,8 +1,8 @@
 
 """Open files to read"""
-#f = open("C:\\Users\\iriom\\Desktop\\Texto.txt")
-#txt = f.read()
-#print(txt)
+f = open("C:\\Users\\iriom\\Desktop\\Texto.txt")
+txt = f.read()
+print(txt)
 
 """Read for characters"""
 """txt2 = f.read(7)
@@ -29,6 +29,6 @@ print(txt)"""
     txt = f.write("Texto añadido al final")
     print(txt)"""
     
-with open("C:\\Users\\iriom\\Desktop\\Texto12434.txt", "w") as f:
+"""with open("C:\\Users\\iriom\\Desktop\\Texto12434.txt", "w") as f:
     txt = f.write("Creará un nuev archivo")
-    print(txt)
+    print(txt)"""

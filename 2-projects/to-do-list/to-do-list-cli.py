@@ -1,5 +1,4 @@
 """Simple To-Do List Application"""
-import tkinter
 import logging
 import os
 import json

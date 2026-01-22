@@ -11,5 +11,3 @@ route = os.path.join(os.getcwd(), "coco.txt")
 print(route)
 
 print(os.path.exists(route))
-print(os.path.isfile(route))
-print(os.path.isdir(route))

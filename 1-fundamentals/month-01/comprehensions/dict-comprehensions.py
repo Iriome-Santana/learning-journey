@@ -22,7 +22,7 @@ print(price_with_tax)
 expensive = {fruit: price for fruit, price in prices.items() if price > 0.5}
 print(expensive)
 
-
+"""Filtering users"""
 users = {"ana": 17, "luis": 21, "maria": 30}
 
 mayors = {name: age for name, age in users.items() if age >= 18}

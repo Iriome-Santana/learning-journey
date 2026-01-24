@@ -13,7 +13,6 @@ class Car:
         return f"Car({self.make}, {self.model}, {self.year})"
     
 car = Car("Toyota", "Corolla", 2022)
-car.model = "Camry"
 print(car)
 
 

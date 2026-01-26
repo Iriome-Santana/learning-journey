@@ -1,49 +1,29 @@
-import csv
-import os
-import logging
+from storage import load_expenses, save_expenses
 
-FILE_NAME = "expenses.csv"
 
-def load_expenses():
-    if not os.path.exists(FILE_NAME):
-        return []
-    with open(FILE_NAME, "r", newline="", encoding="utf-8") as file:
-        reader = csv.DictReader(file)
-        expenses = list(reader)
-    for expense in expenses:
-        expense["amount"] = float(expense["amount"])
+class ExpenseManager:
+    def __init__(self):
+        self.expenses = load_expenses()
+    
+    def add_expense(self, date: str, description: str, amount: float):
+        if amount <= 0:
+            raise ValueError("Amount must be greater than 0")
+        expense = {"date": date, "description": description, "amount": amount}
         
-    return expenses
-
-def save_expenses(expenses):
-    with open(FILE_NAME, "w", newline="", encoding="utf-8") as file:
-        writer = csv.DictWriter(file, fieldnames=["date", "description", "amount"])
-        writer.writeheader()
-        writer.writerows(expenses)
-
-def add_expense(expense):
-    expenses = load_expenses()
-    expenses.append(expense)
-    save_expenses(expenses)
+        self.expenses.append(expense)
+        save_expenses(self.expenses)
     
-def show_expenses():
-    expenses = load_expenses()
-    if not expenses:
-        raise ValueError("No expenses found")
-    for index, expense in enumerate(expenses):
-        print(f"{index + 1}. {expense['date']} - {expense['description']} - {expense['amount']}")
+    def show_expenses(self):
+        return self.expenses
     
-def delete_expense(expense_index):
-    expenses = load_expenses()
-    if not expenses:
-        raise ValueError("No expenses found")
-    if not expense_index.isdigit():
-        raise ValueError("Expense index must be a number")
-    
-    index = int(expense_index) - 1
-    
-    if index < 0 or index >= len(expenses):
-        raise ValueError("Expense not found")
-    
-    expenses.pop(index)
-    save_expenses(expenses)
+    def delete_expense(self, index: int):
+        if not self.expenses:
+            raise ValueError("No expenses to delete")
+        if index < 0 or index >= len(self.expenses):
+            raise ValueError("Expense not found")
+        self.expenses.pop(index)
+        save_expenses(self.expenses)
+        
+    def summary(self):
+        total = sum(expense["amount"] for expense in self.expenses)
+        return total

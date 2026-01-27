@@ -1,5 +1,6 @@
 import logging
 from expenses import ExpenseManager
+from backup import backup_expenses
 from logging_logic import setup_logging
 
 def menu():
@@ -13,6 +14,7 @@ def menu():
     return option
 
 def main():
+    backup_expenses()
     manager = ExpenseManager()
     while True:
         option = menu()

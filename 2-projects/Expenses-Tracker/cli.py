@@ -18,12 +18,16 @@ def main():
         option = menu()
         try:
             if option == "1":
-                date = input("Enter date (YYYY-MM-DD): ")
-                description = input("Enter description: ")
                 try:
-                    amount = float(input("Enter amount: "))
+                    date = input("Enter date (YYYY-MM-DD): ")
+                    description = input("Enter description: ")
+                    try:
+                        amount = float(input("Enter amount: "))
+                    except ValueError:
+                        print("Invalid amount")
+                        continue
                 except ValueError:
-                    print("Invalid amount")
+                    print("Fields are required")
                     continue
 
                 manager.add_expense(date, description, amount)

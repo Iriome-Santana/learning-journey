@@ -6,6 +6,7 @@ A terminal-based Expense Tracker where the user can add, view, and delete expens
 - Add new expenses with date, description, and amount
 - View all recorded expenses
 - Delete expenses by index
+- View summary of expenses
 - Input validation and error handling
 - Persistent storage using CSV
 - Logging of actions for debugging

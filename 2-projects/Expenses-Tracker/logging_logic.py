@@ -1,4 +1,6 @@
 import logging
+import os
+from datetime import datetime
 
 def setup_logging(log_file: str = None):
     handlers = [logging.StreamHandler()]
@@ -9,3 +11,5 @@ def setup_logging(log_file: str = None):
                         handlers=handlers
     )
     logging.info("Logger initialized")
+
+    

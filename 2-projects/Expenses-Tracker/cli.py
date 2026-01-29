@@ -27,9 +27,11 @@ def main():
                         amount = float(input("Enter amount: "))
                     except ValueError:
                         print("Invalid amount")
+                        logging.warning("User enter a invalid amount")
                         continue
                 except ValueError:
                     print("Fields are required")
+                    logging.warning("User enter a invalid field")
                     continue
 
                 manager.add_expense(date, description, amount)
@@ -41,6 +43,7 @@ def main():
                 
                 if not expenses:
                     print("No expenses found")
+                    logging.warning("User try to show expenses but there are no expenses")
                     continue
                 for index, expense in enumerate(expenses, start=1):
                     print(f"{index}. {expense['date']} - {expense['description']} - {expense['amount']}")
@@ -50,6 +53,7 @@ def main():
                 expenses = manager.show_expenses()
                 if not expenses:
                     print("No expenses to delete")
+                    logging.warning("User try to delete expenses but there are no expenses")
                     continue
                 for i, expense in enumerate(expenses, start=1):
                     print(f"{i}. {expense['date']} - {expense['description']} - {expense['amount']}")
@@ -57,6 +61,7 @@ def main():
                     index = int(input("Enter expense index: ")) - 1
                 except ValueError:
                     print("Invalid index")
+                    logging.warning("User enter a invalid index")
                     continue
                 manager.delete_expense(index)
                 logging.info("User delete expense")
